@@ -156,7 +156,7 @@ public class ManageProxys {
 		System.out.println("4. Create a proxy");
 		System.out.println("5. Remove a proxy");
 		System.out.println("6. Read all Messages");
-		System.out.println("7. Read all Messages");
+		System.out.println("7. Send a Messages");
 		System.out.println("8. Exit");
 		int lreps = inputInt();
 
