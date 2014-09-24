@@ -1,6 +1,7 @@
 package uvsq.m2secrets.proxyremailserver.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Remote;
 
@@ -13,6 +14,7 @@ public interface MailService {
     //public functions
 	public User findUser(String name);
 	public User findUser(Long uid);
+	public Map<Long, String> getUserNames();
 	public Long postEncryptedDocument(EncryptedDocument edoc);
 	
 	//authenticated functions

@@ -11,7 +11,7 @@ import uvsq.m2secrets.proxyreencryption.entities.User;
 @Local
 public interface MainDao {
     public Long insertOrUpdate(User user);
-    public List<User> getAllUsers();
+    public List< User> getAllUsers();
     public Long insertOrUpdate(EncryptedDocument edoc);
     public List<EncryptedDocument> getAllEncryptedDocuments();
     public Long insertOrUpdate(ProxyKey edoc);

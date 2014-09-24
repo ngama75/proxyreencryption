@@ -1,6 +1,8 @@
 package uvsq.m2secrets.proxyreencryption.entities;
 
 import it.unisa.dia.gas.jpbc.Element;
+import uvsq.m2secrets.proxyreencryption.utils.BinaryReader;
+import uvsq.m2secrets.proxyreencryption.utils.BinaryWriter;
 
 public class PrivKey {
 	private Element a1;
@@ -10,6 +12,7 @@ public class PrivKey {
 	private Element ha1;
 
 	public PrivKey() {}
+	public PrivKey(byte[] data) {deserializeFrom(data);}
 
 	public static PrivKey generate() {
 		PrivKey reps = new PrivKey();
@@ -50,4 +53,22 @@ public class PrivKey {
 	public void setHa1(Element ha1) {
 		this.ha1 = ha1;
 	}	
+	
+	public byte[] toBytes() {
+		BinaryWriter bw = new BinaryWriter();
+		bw.writeBytes(a1.toBytes());
+		bw.writeBytes(a2.toBytes());
+		bw.writeBytes(za1.toBytes());
+		bw.writeBytes(ha2.toBytes());
+		bw.writeBytes(ha1.toBytes());
+		return bw.toByteArray();
+	}
+	public void deserializeFrom(byte[] data) {
+		BinaryReader br = new BinaryReader(data);
+		a1 = Parameters.Zr().newElementFromBytes(br.next());
+		a2 = Parameters.Zr().newElementFromBytes(br.next());
+		za1 = Parameters.GT().newElementFromBytes(br.next());
+		ha2 = Parameters.G2().newElementFromBytes(br.next());
+		ha1 = Parameters.G2().newElementFromBytes(br.next());
+	}
 }

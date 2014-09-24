@@ -46,6 +46,15 @@ public class MailServiceImpl implements MailService {
 	public User findUser(Long uid) {
 		return dao.getUser(uid);
 	}
+	
+	@Override
+	public Map<Long,String> getUserNames() {
+		Map<Long,String> m = new HashMap<>();
+		for (User u : dao.getAllUsers()) {
+			m.put(u.getId(), u.getName());
+		}
+		return m;
+	}
 
 	/**
 	 * this function is called the first time a user tries to log-in
