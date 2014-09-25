@@ -25,11 +25,6 @@ public class UserServlet extends HttpServlet {
 	  protected void doGet(
 		        HttpServletRequest request, HttpServletResponse response)
 		            throws ServletException, IOException {
-		  PrivKey pri = PrivKey.generate();
-		  User alice = new User();
-		  alice.setName("toto");
-		  alice.setPubKey(new PubKey(pri));
-		  maindao.insertOrUpdate(alice);
 		   ServletOutputStream out = response.getOutputStream();
 		   out.println("<h1>List of users</h1>");
 		   out.println("<pre>");

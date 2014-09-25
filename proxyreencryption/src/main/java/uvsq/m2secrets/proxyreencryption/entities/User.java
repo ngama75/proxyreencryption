@@ -1,6 +1,7 @@
 package uvsq.m2secrets.proxyreencryption.entities;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 @SuppressWarnings("serial")
 public class User implements Serializable {
@@ -39,5 +40,21 @@ public class User implements Serializable {
 
 	public void setPubKeyRaw(byte[] pubKey) {
 		this.pubKey = pubKey;
+	}
+
+	@Override
+	public String toString() {
+		final int maxLen = 10;
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", pubKey=");
+		builder.append(pubKey != null ? Arrays.toString(Arrays.copyOf(pubKey,
+				Math.min(pubKey.length, maxLen))) : null);
+		builder.append("]");
+		return builder.toString();
 	}	
+
 }

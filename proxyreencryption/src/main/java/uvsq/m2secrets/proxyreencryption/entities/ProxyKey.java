@@ -1,10 +1,12 @@
 package uvsq.m2secrets.proxyreencryption.entities;
 
 import it.unisa.dia.gas.jpbc.Element;
-import uvsq.m2secrets.proxyreencryption.utils.SerializableObject;
+
+import java.io.Serializable;
+import java.util.Arrays;
 
 @SuppressWarnings("serial")
-public class ProxyKey extends SerializableObject {
+public class ProxyKey implements Serializable {
 	private Long id;
 	private Long ownerId;
     private Long recipientId;
@@ -81,5 +83,23 @@ public class ProxyKey extends SerializableObject {
 	public void setHa1b2Raw(byte[] ha1b2) {
 		this.ha1b2=ha1b2;		
 	}
+
+	@Override
+	public String toString() {
+		final int maxLen = 10;
+		StringBuilder builder = new StringBuilder();
+		builder.append("ProxyKey [id=");
+		builder.append(id);
+		builder.append(", ownerId=");
+		builder.append(ownerId);
+		builder.append(", recipientId=");
+		builder.append(recipientId);
+		builder.append(", ha1b2=");
+		builder.append(ha1b2 != null ? Arrays.toString(Arrays.copyOf(ha1b2,
+				Math.min(ha1b2.length, maxLen))) : null);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 		
 }

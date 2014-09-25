@@ -41,6 +41,8 @@ public class ManageProxys {
 
 	public static void main(String[] args) throws Exception {
 		br = new BufferedReader(new InputStreamReader(System.in));
+		ms = ProxyGfClientUtils.getMailService();
+
 		User myself = ProxyGfClientUtils.loadLocalDefaultUser();
 		myprivkey = ProxyGfClientUtils.loadLocalDefaultPrivateKey();
 		if (myself==null || myprivkey==null) {
@@ -48,7 +50,6 @@ public class ManageProxys {
 			return;
 		}
 
-		ms = ProxyGfClientUtils.getMailService();
 
 		System.out.println("try to log-in as: "+myself.getId());
 		EncryptedDocument challenge = ms.askLogin(myself.getId());

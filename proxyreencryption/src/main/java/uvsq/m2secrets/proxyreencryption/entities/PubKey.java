@@ -39,4 +39,16 @@ public class PubKey {
 		bw.writeBytes(ha2.toBytes());
 		return bw.toByteArray();
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PubKey [za1=");
+		builder.append(za1);
+		builder.append(", ha2=");
+		builder.append(ha2);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }
