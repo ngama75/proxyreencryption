@@ -22,7 +22,83 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-ejb-plugin</artifactId>
+      	<version>2.4</version>
+      	<configuration>
+      	<generateClient>true</generateClient>
+          <clientIncludes>
+             <clientInclude>**/MailService.class</clientInclude>
+             <clientInclude>**/UserService.class</clientInclude>
+          </clientIncludes>
+          <ejbVersion>3.1</ejbVersion>
+      	</configuration>
+      	<executions>
+      	<execution>
+      	<id>make-ejb</id>
+      	<phase>compile</phase>
+      	<goals>
+      	<goal>ejb</goal>
+      	</goals>
+      	</execution>
+      	</executions>
+      </plugin>
+      <!-- 
+            <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>install-ejb-client</id>
+                <phase>install</phase>
+                <goals>
+                    <goal>install-file</goal>
+                </goals>
+                <configuration>
+                    <packaging>ejb-client</packaging>
+                    <artifactId>${project.artifactId}</artifactId>
+                    <groupId>${project.groupId}</groupId>
+                    <version>${project.version}</version>
+                    <file>${project.build.directory}/${project.artifactId}-${project.version}-client.jar</file>
+                </configuration>
+            </execution>
+        </executions>      
+      </plugin> -->
     </plugins>
+    <pluginManagement>
+    	<plugins>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    		<plugin>
+    			<groupId>org.eclipse.m2e</groupId>
+    			<artifactId>lifecycle-mapping</artifactId>
+    			<version>1.0.0</version>
+    			<configuration>
+    				<lifecycleMappingMetadata>
+    					<pluginExecutions>
+    						<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>
+    									org.apache.maven.plugins
+    								</groupId>
+    								<artifactId>
+    									maven-ejb-plugin
+    								</artifactId>
+    								<versionRange>[2.4,)</versionRange>
+    								<goals>
+    									<goal>ejb</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<ignore></ignore>
+    							</action>
+    						</pluginExecution>
+    					</pluginExecutions>
+    				</lifecycleMappingMetadata>
+    			</configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
   </build>
   <dependencies>
   	<dependency>

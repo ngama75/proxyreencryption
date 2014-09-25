@@ -25,6 +25,7 @@
     	<groupId>uvsq.m2secrets</groupId>
     	<artifactId>proxyremailserver</artifactId>
     	<version>1.0</version>
+    	<type>ejb-client</type>
     </dependency>
     <dependency>
     	<groupId>uvsq.m2secrets</groupId>
