@@ -12,7 +12,7 @@ import uvsq.m2secrets.proxyreencryption.entities.User;
 import uvsq.m2secrets.proxyremailserver.service.MailService;
 
 
-public class ManageProxys {
+public class MailClient {
 	private static User me = null;
 	private static MailService ms = null;
 	private static PrivKey myprivkey = null;

@@ -6,9 +6,8 @@ import javax.persistence.Id;
 
 import uvsq.m2secrets.proxyreencryption.entities.EncryptedDocument;
 
-@Entity
+//TODO: transformer en entité JPA
 public class DBEncryptedDocument  {
-	@Id @GeneratedValue
 	private Long id;
 	private Long recipientId;
 	private byte[] encryptedSessionKey;
@@ -30,36 +29,7 @@ public class DBEncryptedDocument  {
 		reps.setEncryptedBody(encryptedBody);
 		return reps;
 	}
+	
+	//TODO: ne pas oublier les getters and setters
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getRecipientId() {
-		return recipientId;
-	}
-
-	public void setRecipientId(Long recipientId) {
-		this.recipientId = recipientId;
-	}
-
-	public byte[] getEncryptedSessionKey() {
-		return encryptedSessionKey;
-	}
-
-	public void setEncryptedSessionKey(byte[] encryptedSessionKey) {
-		this.encryptedSessionKey = encryptedSessionKey;
-	}
-
-	public byte[] getEncryptedBody() {
-		return encryptedBody;
-	}
-
-	public void setEncryptedBody(byte[] encryptedBody) {
-		this.encryptedBody = encryptedBody;
-	}
 }

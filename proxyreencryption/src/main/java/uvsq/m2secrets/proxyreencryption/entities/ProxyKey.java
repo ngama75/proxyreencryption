@@ -15,13 +15,8 @@ public class ProxyKey implements Serializable {
 	public ProxyKey() {}
 	
 	public static ProxyKey delegate(User owner, User recipient, PrivKey ownerPriv) {
-	   ProxyKey reps = new ProxyKey();
-	   PubKey recvPubkey = recipient.getPubKey();
-	   Element ha1b2 = recvPubkey.getHa2().duplicate().powZn(ownerPriv.getA1());
-	   reps.setOwnerId(owner.getId());
-	   reps.setRecipientId(recipient.getId());
-	   reps.setHa1b2(ha1b2);
-	   return reps;
+		//TODO: create the proxy delegation
+		return null;
 	}
 	public static EncryptedDocument reencrypt(ProxyKey proxy, EncryptedDocument edoc) {
 		if (edoc.getRecipientId()!=proxy.ownerId) {
@@ -33,15 +28,8 @@ public class ProxyKey implements Serializable {
 			System.err.println("Can only reencrypt a level 2 ciphertext");
 			return null;
 		}
-		Element za1b2k = Parameters.pairing().pairing(proxy.getHa1b2(),esk.getGk());
-		EncryptedSessionKey newesk = new EncryptedSessionKey();
-		newesk.setLevel3(za1b2k,esk.getMza1k());
-		EncryptedDocument newedoc = new EncryptedDocument();
-		newedoc.setId(edoc.getId());
-		newedoc.setRecipientId(proxy.recipientId);
-		newedoc.setEncryptedSessionKey(newesk);
-		newedoc.setEncryptedBody(edoc.getEncryptedBody());
-		return newedoc;
+		//TODO: reencrypt the document
+		return null;
 	}
 
 	public Long getId() {
